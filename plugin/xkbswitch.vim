@@ -313,6 +313,9 @@ let s:XkbSwitchCmdwinEntered = 0
 
 
 fun! <SID>skip_buf_or_win()
+    if exists('g:vscode')
+        return 0
+    endif
     if getbufvar('', '&buftype') == 'nofile' ||
                 \ index(g:XkbSwitchSkipFt, &ft) != -1
         return 1
